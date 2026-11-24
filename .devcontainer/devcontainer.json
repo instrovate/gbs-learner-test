@@ -1,0 +1,12 @@
+{
+  "name": "Gift and Bliss Supplies: Text-to-SQL App",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "features": { "ghcr.io/devcontainers/features/node:1": { "version": "20" } },
+  "containerEnv": { "DATABASE_URL": "postgresql://postgres:learner@db:5432/gbs", "PGPASSWORD": "learner" },
+  "forwardPorts": [8501, 8000, 5173],
+  "portsAttributes": { "8501": { "label": "Dashboard" }, "8000": { "label": "API" }, "5173": { "label": "Web app" } },
+  "postCreateCommand": "sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client && pip install -q -r requirements.txt && cp -n .env.example .env || true",
+  "customizations": { "vscode": { "extensions": ["ms-python.python"] } }
+}
